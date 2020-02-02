@@ -1,0 +1,7 @@
+
+
+
+#Setting up VNC on Boot and starting
+
+sudo systemctl enable vncserver-x11-serviced.service
+sudo systemctl start vncserver-x11-serviced.service
