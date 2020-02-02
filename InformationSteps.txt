@@ -1,4 +1,7 @@
+#Update/Upgrade raspBian (Important)
 
+sudo apt update
+sudo apt full-upgrade
 
 
 #Setting up VNC on Boot and starting
