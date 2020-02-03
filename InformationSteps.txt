@@ -1,23 +1,40 @@
-#Update/Upgrade raspBian (Important)
+
+#1 Update/Upgrade raspBian (Important)
 
 sudo apt update && 
 sudo apt full-upgrade -y
 reboot
 
-#Remove Blank Screen the Proper way
+#2 Remove Blank Screen the Proper way
+#  Once install. reboot and acccess the screensaver gui from application and disable the screensaver :)
 
-sudo apt-get install xscreensaver
+sudo apt-get install xscreensaver -y
 
-#Install Kstars-Indi
+#3 Install Kstars-Indi
 
-#Setting up VNC on Boot and starting
+wget -O - https://www.astroberry.io/repo/key | sudo apt-key add -
+sudo su -c "echo 'deb https://www.astroberry.io/repo/ buster main' > /etc/apt/sources.list.d/astroberry.list"
+sudo apt update
+
+sudo apt install indi-full kstars-bleeding gsc -y
+
+#4 Setting up VNC on Boot and starting
 
 sudo systemctl enable vncserver-x11-serviced.service
 sudo systemctl start vncserver-x11-serviced.service
 
-#Setting up the Network
-# https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md
+#5 Setting up the Network
+#  https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md
 
-sudo apt install dnsmasq hostapd
+sudo apt install dnsmasq hostapd -y
 sudo systemctl stop dnsmasq
 sudo systemctl stop hostapd
+
+(Continue the tutorial from the link provided)
+Before setting up Bridge, test your connection to see if you are getting internet through wifi hotspot. If yes
+dont bother doing Bridge.
+
+
+#6 Setting up a fake hdmi port and resolution
+# http://scruss.com/blog/2017/06/12/headless-raspberry-pi-vnc-useful-resolution/
+# For the Resolution, i choosed 1920x1080 @ 60hz
