@@ -1,8 +1,23 @@
 #Update/Upgrade raspBian (Important)
 
-sudo apt update && full-upgrade -y
+sudo apt update && 
+sudo apt full-upgrade -y
+reboot
+
+#Remove Blank Screen the Proper way
+
+sudo apt-get install xscreensaver
+
+#Install Kstars-Indi
 
 #Setting up VNC on Boot and starting
 
 sudo systemctl enable vncserver-x11-serviced.service
 sudo systemctl start vncserver-x11-serviced.service
+
+#Setting up the Network
+# https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md
+
+sudo apt install dnsmasq hostapd
+sudo systemctl stop dnsmasq
+sudo systemctl stop hostapd
